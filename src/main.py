@@ -13,12 +13,12 @@ from pso.base.discrete_pso import DPSO
 
 def run_discrete_bench(i, problem):
     dpso = DPSO(problem)
-    return i, dpso.submit(1000)
+    return i, dpso.submit(100)
 
 
 def run_continue_bench(i, problem):
     cpso = CPSO(problem)
-    return i, cpso.submit(1000)
+    return i, cpso.submit(100)
 
 
 if __name__ == '__main__':
