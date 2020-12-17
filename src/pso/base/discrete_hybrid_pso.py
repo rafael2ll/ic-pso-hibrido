@@ -14,7 +14,7 @@ from utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-class DPSO:
+class DHybridPSO:
     def __init__(self, problem, size=100):
         self.problem = problem
         self.length = len(list(problem.get_nodes()))

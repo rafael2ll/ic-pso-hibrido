@@ -8,11 +8,11 @@ import tsplib95
 from joblib import Parallel, delayed
 
 from pso import CPSO
-from pso.base.discrete_pso import DPSO
+from pso.base.discrete_hybrid_pso import DHybridPSO
 
 
 def run_discrete_bench(i, problem):
-    dpso = DPSO(problem)
+    dpso = DHybridPSO(problem)
     return i, dpso.submit(100)
 
 
@@ -24,7 +24,7 @@ def run_continue_bench(i, problem):
 if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s - %(name)s - %(message)s', level=logging.INFO)
     problem = tsplib95.load('../data/gr48.tsp')
-    DPSO(problem).submit(10)
+    DHybridPSO(problem).submit(10)
     discrete = Parallel(n_jobs=10)(delayed(run_discrete_bench)(i, problem) for i in tqdm.tqdm(range(10)))
     continue_ = Parallel(n_jobs=10)(delayed(run_continue_bench)(i, problem) for i in tqdm.tqdm(range(10)))
 
